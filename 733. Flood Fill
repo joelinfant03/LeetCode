@@ -1,0 +1,18 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        a=[]
+        ori=image[sr][sc]
+        ind=[[1,0],[-1,0],[0,1],[0,-1]]
+        R,C=len(image),len(image[0])
+        if image[sr][sc]==color:
+            return image
+        image[sr][sc]=color
+        a.append((sr,sc))
+        while a:
+            r,c=a.pop(0)
+            for l,m in ind:
+                nr,nc=r+l,c+m
+                if 0<=nr<R and 0<=nc<C and image[nr][nc]==ori:
+                    image[nr][nc]=color
+                    a.append((nr,nc))
+        return image
