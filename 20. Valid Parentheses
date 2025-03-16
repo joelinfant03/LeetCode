@@ -1,0 +1,15 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        l=[]
+        if s=="":
+            return True
+        for i in s:
+            if l and l[-1]=="(" and i==")":
+                l.pop()
+            elif l and l[-1]=="[" and i=="]":
+                l.pop()
+            elif l and l[-1]=="{" and i=="}":
+                l.pop()
+            else:
+                l.append(i)
+        return not l
